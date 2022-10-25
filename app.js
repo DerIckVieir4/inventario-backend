@@ -1,21 +1,11 @@
+const bodyParser = require("body-parser");
 const express = require("express");
-const res = require("express/lib/response");
+const morgan = require("morgan");
 const app = express();
-const usuarios=[
-    {nome:"arthur",idade:20},
-    {nome:"pedro",idade:90},
-    {nome:"amanda",idade:10},
-    {nome:"alvaro",idade:30},
-    {nome:"ivã",idade:15},
-    {nome:"arthur m",idade:60}
-]
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
+ app.use(morgan('dev'))
+const rotaUsuarios = require('./routes/rotaUsuario')
 
-app.get("/",(req,res)=>{
-    res.json({menssagem:"Hello Word"})
-})
-app.get("/usuarios",(req,res)=>{
-    res.send(usuarios)
-})
-
-
-module.exports = app;
+app.use('/usuario',rotaUsuarios);
+ module.exports = app;
