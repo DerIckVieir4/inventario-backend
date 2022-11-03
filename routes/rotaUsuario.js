@@ -137,6 +137,7 @@ router.post("/",(req,res)=>{
            {mensagem:errorMsg} 
         )
     }
+    
 
     if (email.length==0){ 
         res.status(204).send(
