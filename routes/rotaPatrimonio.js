@@ -24,7 +24,7 @@ router.get("/",(req,res)=>{
    res.send(patrimonio);
 })
 router.get("/:id",(req,res)=>{
-   const id=req.params.id;
+   const {id} = req.params.id;
    let novoarray=[];
    novoarray=patrimonio.filter(linha=>{
     if(linha.id==id){
