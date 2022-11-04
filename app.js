@@ -8,9 +8,11 @@ app.use(bodyParser.json());
 const rotaUsuarios = require('./routes/rotaUsuario');
 const rotaEmpresas = require('./routes/rotaEmpresas');
 const rotaPatrimonio = require('./routes/rotaPatrimonio');
+const rotaSetores = require('./routes/rotaSetores');
 
 app.use('/usuario', rotaUsuarios);
-app.use('/empresa', rotaEmpresas);
+app.use('/empresas', rotaEmpresas);
 app.use('/patrimonio', rotaPatrimonio);
+app.use('/setores', rotaSetores);
 
  module.exports = app;

@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-
 // function validaremail() {
 //     var re = /\S+@\S+\.\S+/;
 //     return re.test(email);
@@ -16,75 +15,40 @@ const router = express.Router();
 //     return false;
 // }
 
-const empresa=[
+const empresas=[
     {
         id:1,
-        nome:"Derick",
+        nome:"Tiradentes",
         responsavel:"Pai do Derick",
         contato:"347678623678"
     },
 
     {
         id:2,
-        nome:"Iudhy",
+        nome:"Campelo",
         responsavel:"Pai do Iudhy",
         contato:"u3yu373733"
     },
 
     {
         id:3,
-        nome:"Willian",
+        nome:"Dent Center",
         responsavel:"Pai do Willian",
         contato:"74747474747"
-    },
-    
-    {
-        id:4,
-        nome:"Bispo",
-        responsavel:"Pai do bispo",
-        contato:"90009090900"
-    },
-
-    {
-        id:5,
-        nome:"Wesley",
-        responsavel:"Pai do Wesley",
-        contato:"223808302309"
-    },
-
-    {
-        id:6,
-        nome:"Raimundo",
-        responsavel:"Pai do Raimundo",
-        contato:"74747474747"
-    },
-
-    {
-        id:7,
-        nome:"Wallysson",
-        responsavel:"Pai do Wallisson",
-        contato:"454544445547"
-    }, 
-
-    {
-        id:8,
-        nome:"Guilherme",
-        responsavel:"Pai do Guilherme",
-        contato:"8768739484"
-    }, 
+    }
 ]
 
 
 
 router.get("/empresas",(req,res)=>{
 
-    res.send(empresa);
+    res.send(empresas);
 })
 
 router.get("/:id",(req,res)=>{
     const id=req.params.id;
     let novoarray=[];
-    novoarray=empresa.filter(linha=>{
+    novoarray=empresas.filter(linha=>{
         if(linha.id==id){
             return linha;
         }
@@ -105,15 +69,14 @@ router.post("/empresas",(req,res)=>{
         )
     }
 
-    // )E-mail
-    if(responsavel.length<=3(responsavel)){
+    
+    if(responsavel.length==0(responsavel)){
         i++;
         errorMsg.push(
             {mensagem:"Campo inválido"}
         )
     }
 
-    // verificarduplicidade
     if(contato.length<9(contato)){
         i++;
         errorMsg.push(
@@ -122,7 +85,7 @@ router.post("/empresas",(req,res)=>{
     }
 
     if(i==0){
-    empresa.push(       
+    empresas.push(       
         {
             id:id,
             nome:nome,
@@ -159,7 +122,7 @@ router.post("/empresas",(req,res)=>{
 router.delete("/empresas",(req,res)=>{
     let novoarray=[];
     const {id} = req.body;
-    novoarray=empresa.filter(linha=>{
+    novoarray=empresas.filter(linha=>{
      if(linha.id!==id){
        return linha;
      }  
@@ -173,7 +136,7 @@ router.delete("/empresas",(req,res)=>{
    router.patch("/empresas",(req,res)=>{
     let novoarray=[];
      const {id,nome,responsavel,contato} = req.body;
-    novoarray=empresa.filter(linha=>{
+    novoarray=empresas.filter(linha=>{
        if(linha.id==id){
            return{
                        id:id,
